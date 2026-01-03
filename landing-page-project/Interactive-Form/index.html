@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Form | Codveda Tech</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico" />
+  </head>
+  <body>
+    <!-- Progress Indicator -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="steps">
+        <div class="step active" data-step="1">
+          <span>1</span>
+          <p>Personal</p>
+        </div>
+        <div class="step" data-step="2">
+          <span>2</span>
+          <p>Account</p>
+        </div>
+        <div class="step" data-step="3">
+          <span>3</span>
+          <p>Preferences</p>
+        </div>
+        <div class="step" data-step="4">
+          <span>4</span>
+          <p>Review</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <h1><i class="fas fa-file-alt"></i> Interactive Registration Form</h1>
+        <p class="subtitle">Complete all steps to create your account</p>
+      </header>
+
+      <!-- Form Container -->
+      <div class="form-container">
+        <form id="registrationForm" novalidate>
+          <!-- Step 1: Personal Information -->
+          <div class="form-step active" id="step1">
+            <div class="form-header">
+              <h2><i class="fas fa-user"></i> Personal Information</h2>
+              <p>Tell us about yourself</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="input-group">
+                <label for="firstName">
+                  <i class="fas fa-user-circle"></i> First Name
+                  <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  placeholder="Enter your first name"
+                  minlength="2"
+                  maxlength="50"
+                />
+                <div class="error-message" id="firstNameError"></div>
+                <div class="input-feedback">
+                  <span class="char-counter">0/50</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="lastName">
+                  <i class="fas fa-user-circle"></i> Last Name
+                  <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  placeholder="Enter your last name"
+                  minlength="2"
+                  maxlength="50"
+                />
+                <div class="error-message" id="lastNameError"></div>
+                <div class="input-feedback">
+                  <span class="char-counter">0/50</span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i> Email Address
+                  <span class="required">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your.email@example.com"
+                />
+                <div class="error-message" id="emailError"></div>
+              </div>
+
+              <div class="input-group">
+                <label for="phone">
+                  <i class="fas fa-phone"></i> Phone Number
+                  <span class="required">*</span>
+                </label>
+                <div class="phone-input">
+                  <select id="countryCode" name="countryCode">
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                  </select>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="123-456-7890"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  />
+                </div>
+                <div class="error-message" id="phoneError"></div>
+                <div class="input-hint">Format: 123-456-7890</div>
+              </div>
+
+              <div class="input-group full-width">
+                <label for="address">
+                  <i class="fas fa-home"></i> Address
+                </label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Street, City, State"
+                />
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-next" data-next="step2">
+                Next Step <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Account Details -->
+          <div class="form-step" id="step2">
+            <div class="form-header">
+              <h2><i class="fas fa-key"></i> Account Security</h2>
+              <p>Set up your login credentials</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="input-group">
+                <label for="username">
+                  <i class="fas fa-at"></i> Username
+                  <span class="required">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  required
+                  placeholder="Choose a username"
+                  minlength="4"
+                  maxlength="20"
+                />
+                <div class="error-message" id="usernameError"></div>
+                <div class="input-feedback">
+                  <i class="fas fa-check check-icon hidden"></i>
+                  <i class="fas fa-times error-icon hidden"></i>
+                  <span class="availability"></span>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="password">
+                  <i class="fas fa-lock"></i> Password
+                  <span class="required">*</span>
+                </label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    placeholder="Create a strong password"
+                    minlength="8"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    id="togglePassword"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+
+                <!-- Password Strength Meter -->
+                <div class="password-strength">
+                  <div class="strength-meter">
+                    <div class="strength-bar" id="strengthBar"></div>
+                  </div>
+                  <div class="strength-text" id="strengthText">Very Weak</div>
+                </div>
+
+                <div class="password-requirements">
+                  <p>Password must contain:</p>
+                  <ul>
+                    <li class="req-item" data-rule="length">
+                      <i class="fas fa-circle"></i> At least 8 characters
+                    </li>
+                    <li class="req-item" data-rule="uppercase">
+                      <i class="fas fa-circle"></i> One uppercase letter
+                    </li>
+                    <li class="req-item" data-rule="lowercase">
+                      <i class="fas fa-circle"></i> One lowercase letter
+                    </li>
+                    <li class="req-item" data-rule="number">
+                      <i class="fas fa-circle"></i> One number
+                    </li>
+                    <li class="req-item" data-rule="special">
+                      <i class="fas fa-circle"></i> One special character
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="confirmPassword">
+                  <i class="fas fa-lock"></i> Confirm Password
+                  <span class="required">*</span>
+                </label>
+                <div class="password-wrapper">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    required
+                    placeholder="Confirm your password"
+                  />
+                  <button
+                    type="button"
+                    class="toggle-password"
+                    id="toggleConfirmPassword"
+                  >
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+                <div class="error-message" id="confirmPasswordError"></div>
+                <div class="input-feedback">
+                  <i class="fas fa-check check-icon hidden"></i>
+                  <i class="fas fa-times error-icon hidden"></i>
+                  <span class="match-status"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" data-prev="step1">
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+              <button type="button" class="btn btn-next" data-next="step3">
+                Next Step <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Preferences -->
+          <div class="form-step" id="step3">
+            <div class="form-header">
+              <h2><i class="fas fa-cogs"></i> Preferences</h2>
+              <p>Customize your experience</p>
+            </div>
+
+            <div class="form-grid">
+              <div class="input-group">
+                <label for="country">
+                  <i class="fas fa-globe"></i> Country
+                  <span class="required">*</span>
+                </label>
+                <select id="country" name="country" required>
+                  <option value="">Select your country</option>
+                  <option value="US">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="CA">Canada</option>
+                  <option value="AU">Australia</option>
+                  <option value="IN">India</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="JP">Japan</option>
+                </select>
+                <div class="error-message" id="countryError"></div>
+              </div>
+
+              <div class="input-group">
+                <label>
+                  <i class="fas fa-language"></i> Preferred Language
+                  <span class="required">*</span>
+                </label>
+                <div class="radio-group">
+                  <label class="radio-option">
+                    <input type="radio" name="language" value="en" required />
+                    <span class="radio-custom"></span>
+                    <span class="radio-label">
+                      <i class="fas fa-language"></i> English
+                    </span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="language" value="es" required />
+                    <span class="radio-custom"></span>
+                    <span class="radio-label">
+                      <i class="fas fa-language"></i> Spanish
+                    </span>
+                  </label>
+                  <label class="radio-option">
+                    <input type="radio" name="language" value="fr" required />
+                    <span class="radio-custom"></span>
+                    <span class="radio-label">
+                      <i class="fas fa-language"></i> French
+                    </span>
+                  </label>
+                </div>
+                <div class="error-message" id="languageError"></div>
+              </div>
+
+              <div class="input-group">
+                <label>
+                  <i class="fas fa-bell"></i> Notification Preferences
+                </label>
+                <div class="checkbox-group">
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="notifications" value="email" />
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label">
+                      <i class="fas fa-envelope"></i> Email Notifications
+                    </span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="notifications" value="sms" />
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label">
+                      <i class="fas fa-sms"></i> SMS Alerts
+                    </span>
+                  </label>
+                  <label class="checkbox-option">
+                    <input type="checkbox" name="notifications" value="push" />
+                    <span class="checkbox-custom"></span>
+                    <span class="checkbox-label">
+                      <i class="fas fa-mobile-alt"></i> Push Notifications
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="input-group full-width">
+                <label for="bio">
+                  <i class="fas fa-user-edit"></i> Bio
+                  <span class="optional">(Optional)</span>
+                </label>
+                <textarea
+                  id="bio"
+                  name="bio"
+                  placeholder="Tell us about yourself..."
+                  maxlength="500"
+                ></textarea>
+                <div class="input-feedback">
+                  <span class="char-counter">0/500</span>
+                </div>
+              </div>
+
+              <div class="input-group full-width">
+                <label for="profilePic">
+                  <i class="fas fa-camera"></i> Profile Picture
+                  <span class="optional">(Optional)</span>
+                </label>
+                <div class="file-upload">
+                  <input
+                    type="file"
+                    id="profilePic"
+                    name="profilePic"
+                    accept="image/*"
+                    class="file-input"
+                  />
+                  <label for="profilePic" class="file-label">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Click to upload or drag and drop</span>
+                    <p>PNG, JPG, GIF up to 5MB</p>
+                  </label>
+                  <div class="file-preview" id="filePreview"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" data-prev="step2">
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+              <button type="button" class="btn btn-next" data-next="step4">
+                Next Step <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Review & Submit -->
+          <div class="form-step" id="step4">
+            <div class="form-header">
+              <h2><i class="fas fa-check-circle"></i> Review & Submit</h2>
+              <p>Review your information before submitting</p>
+            </div>
+
+            <div class="review-section">
+              <div class="review-card">
+                <h3><i class="fas fa-user"></i> Personal Information</h3>
+                <div class="review-content">
+                  <div class="review-item">
+                    <span class="review-label">Full Name:</span>
+                    <span class="review-value" id="reviewName">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Email:</span>
+                    <span class="review-value" id="reviewEmail">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Phone:</span>
+                    <span class="review-value" id="reviewPhone">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Address:</span>
+                    <span class="review-value" id="reviewAddress">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <h3><i class="fas fa-key"></i> Account Details</h3>
+                <div class="review-content">
+                  <div class="review-item">
+                    <span class="review-label">Username:</span>
+                    <span class="review-value" id="reviewUsername">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Password:</span>
+                    <span class="review-value">••••••••</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="review-card">
+                <h3><i class="fas fa-cogs"></i> Preferences</h3>
+                <div class="review-content">
+                  <div class="review-item">
+                    <span class="review-label">Country:</span>
+                    <span class="review-value" id="reviewCountry">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Language:</span>
+                    <span class="review-value" id="reviewLanguage">-</span>
+                  </div>
+                  <div class="review-item">
+                    <span class="review-label">Notifications:</span>
+                    <span class="review-value" id="reviewNotifications">-</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="terms-section">
+              <label class="checkbox-option">
+                <input type="checkbox" id="terms" name="terms" required />
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">
+                  I agree to the
+                  <a href="#" class="terms-link">Terms of Service</a> and
+                  <a href="#" class="terms-link">Privacy Policy</a>
+                  <span class="required">*</span>
+                </span>
+              </label>
+              <div class="error-message" id="termsError"></div>
+            </div>
+
+            <div class="form-navigation">
+              <button type="button" class="btn btn-prev" data-prev="step3">
+                <i class="fas fa-arrow-left"></i> Previous
+              </button>
+              <button type="submit" class="btn btn-submit" id="submitBtn">
+                <span class="submit-text">
+                  <i class="fas fa-paper-plane"></i> Submit Form
+                </span>
+                <span class="loading hidden">
+                  <i class="fas fa-spinner fa-spin"></i> Processing...
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Form Data Preview (for testing) -->
+      <div class="data-preview">
+        <button id="togglePreview" class="btn-preview">
+          <i class="fas fa-code"></i> Show Form Data
+        </button>
+        <pre id="formDataPreview" class="hidden"></pre>
+      </div>
+
+      <!-- Success Modal -->
+      <div class="modal-overlay hidden" id="successModal">
+        <div class="modal-content">
+          <div class="modal-icon success">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <h2>Registration Successful!</h2>
+          <p>
+            Your account has been created successfully. Welcome to Codveda Tech!
+          </p>
+          <div class="modal-data" id="modalData"></div>
+          <div class="modal-actions">
+            <button class="btn btn-modal" id="closeModal">Close</button>
+            <button class="btn btn-modal btn-primary" id="downloadData">
+              <i class="fas fa-download"></i> Download Data
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>
+          Built with <i class="fas fa-heart"></i> by
+          <strong>Codveda Tech</strong>
+        </p>
+        <p class="footer-links">
+          <a href="#"><i class="fab fa-github"></i> GitHub</a> •
+          <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a> •
+          <a href="#"><i class="fas fa-globe"></i> Portfolio</a>
+        </p>
+        <p class="copyright">
+          © 2024 Interactive Form Template. All rights reserved.
+        </p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
